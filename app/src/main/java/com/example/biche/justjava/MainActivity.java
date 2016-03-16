@@ -23,7 +23,10 @@ public class MainActivity extends AppCompatActivity {
     {
         String priceMessage = "Total: $" + quantity * 5;
         priceMessage = priceMessage + "\n Thank you!";
-        displayMessage(priceMessage);
+        //displayMessage(priceMessage);
+
+        int price = calculatePrice(quantity);
+        displayPrice(price);
     }
 
     /**
@@ -31,8 +34,9 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param quantity is the number of cups of coffee ordered
      */
-    private void calculatePrice(int quantity) {
+    private int calculatePrice(int quantity) {
         int price = quantity * 5;
+        return price;
     }
 
     public void increment(View view) {
