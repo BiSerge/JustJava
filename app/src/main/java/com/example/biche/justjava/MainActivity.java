@@ -21,12 +21,9 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view)
     {
-        String priceMessage = "Total: $" + quantity * 5;
-        priceMessage = priceMessage + "\n Thank you!";
-        //displayMessage(priceMessage);
-
-        int price = calculatePrice(quantity);
-        displayPrice(price);
+        int price = calculatePrice();
+        displayMessage(createOrderSummary(price));
+        //displayPrice(price);
     }
 
     /**
@@ -34,9 +31,17 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param quantity is the number of cups of coffee ordered
      */
-    private int calculatePrice(int quantity) {
-        int price = quantity * 5;
-        return price;
+    private int calculatePrice() {
+        return quantity * 5;
+    }
+
+    private String createOrderSummary(int price)
+    {
+        String priceMessage = "Name: Serge";
+        priceMessage += "\n Quantity: " + quantity;
+        priceMessage += "\n Total: $" + price;
+        priceMessage += "\n Thank you!";
+        return  priceMessage;
     }
 
     public void increment(View view) {
