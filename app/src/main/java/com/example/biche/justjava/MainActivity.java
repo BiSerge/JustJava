@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         EditText nameEditText = (EditText) findViewById(R.id.editTextName);
         String nameString = nameEditText.getText().toString();
 
-        int price = calculatePrice();
+        int price = calculatePrice(hasWippedCream, hasChocolate);
         displayMessage(createOrderSummary(price, hasWippedCream, hasChocolate, nameString));
         //displayMessage(price);
     }
@@ -42,8 +42,17 @@ public class MainActivity extends AppCompatActivity {
      *
      //* @param quantity is the number of cups of coffee ordered
      */
-    private int calculatePrice() {
-        return quantity * 5;
+    private int calculatePrice(boolean addWippedCream, boolean addChocolate) {
+        int basePrice = 5;
+        if (addWippedCream){
+            basePrice += 1;
+        }
+
+        if (addChocolate){
+            basePrice += 2;
+        }
+
+        return quantity * basePrice;
     }
 
     private String createOrderSummary(int price, boolean addWhipedCream, boolean addChocolate, String nameUser)
