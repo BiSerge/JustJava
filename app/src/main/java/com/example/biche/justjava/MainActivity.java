@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             // Exit this method early because there's nothing left to do
             return;
         }
-        quantity =+ 1;
+        quantity += 1;
         display(quantity);
     }
 
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             // Exit this method early because there's nothing left to do
             return;
         }
-        quantity =- 1;
+        quantity -= 1;
         display(quantity);
     }
 
