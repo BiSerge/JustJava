@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
         int price = calculatePrice(hasWippedCream, hasChocolate);
         String priceMessage = createOrderSummary(price, hasWippedCream, hasChocolate, nameString);
-        //displayMessage(createOrderSummary(price, hasWippedCream, hasChocolate, nameString));
 
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto: "));
@@ -47,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
         if (intent.resolveActivity(getPackageManager()) != null){
             startActivity(intent);
         }
-
-        displayMessage(priceMessage);
     }
 
     /**
@@ -109,13 +106,5 @@ public class MainActivity extends AppCompatActivity {
         TextView quantityTextView = (TextView) findViewById(
                 R.id.quantity_text_view);
         quantityTextView.setText("" + number);
-    }
-
-    /**
-     * This method displays the given text on the screen.
-     */
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
     }
 }
