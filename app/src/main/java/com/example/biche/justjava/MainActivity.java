@@ -1,5 +1,7 @@
 package com.example.biche.justjava;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -35,8 +37,18 @@ public class MainActivity extends AppCompatActivity {
         String nameString = nameEditText.getText().toString();
 
         int price = calculatePrice(hasWippedCream, hasChocolate);
-        displayMessage(createOrderSummary(price, hasWippedCream, hasChocolate, nameString));
-        //displayMessage(price);
+        String priceMessage = createOrderSummary(price, hasWippedCream, hasChocolate, nameString);
+        //displayMessage(createOrderSummary(price, hasWippedCream, hasChocolate, nameString));
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto: "));
+        intent.putExtra(intent.EXTRA_SUBJECT, "Just Java order for " + nameString);
+        intent.putExtra(intent.EXTRA_TEXT, priceMessage);
+        if (intent.resolveActivity(getPackageManager()) != null){
+            startActivity(intent);
+        }
+
+        displayMessage(priceMessage);
     }
 
     /**
